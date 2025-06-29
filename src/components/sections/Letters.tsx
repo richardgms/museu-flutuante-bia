@@ -7,7 +7,8 @@ import {
   CalendarIcon,
   SparklesIcon,
   ClockIcon,
-  StarIcon
+  StarIcon,
+  HeartIcon
 } from '@heroicons/react/24/outline';
 import { HeartIcon as HeartSolid } from '@heroicons/react/24/solid';
 import { cn, formatDate } from '@/lib/utils';
@@ -218,7 +219,7 @@ const Letters: React.FC<LettersProps> = ({ letters, title, className }) => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-14 xl:gap-16 max-w-[1200px] mx-auto pt-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-14 xl:gap-16 max-w-[1200px] mx-auto pt-8 pb-16 md:pb-20"
         >
           {letters.map((letter, index) => {
             const IconComponent = letterTypeIcons[letter.type];
@@ -409,8 +410,8 @@ const Letters: React.FC<LettersProps> = ({ letters, title, className }) => {
                             {openLetter.title}
                           </h3>
                           <p className="text-white/60 text-sm flex items-center gap-2">
-                            <CalendarIcon className="w-4 h-4" />
-                            {formatDate(openLetter.date)}
+                            <HeartIcon className="w-4 h-4" />
+                            Escrita com muito amor
                           </p>
                         </div>
                       </div>
@@ -466,7 +467,7 @@ const Letters: React.FC<LettersProps> = ({ letters, title, className }) => {
                           Com todo meu amor,
                         </p>
                         <p className="font-romantic text-2xl text-gold mt-2">
-                          Richard 💕
+                          Nathan 💕
                         </p>
                         <p className="text-white/40 text-xs mt-4 font-light">
                           Clique fora da carta ou pressione ESC para fechar

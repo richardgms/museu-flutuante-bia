@@ -58,30 +58,50 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({ playlist, className }) => {
   const howlRef = useRef<Howl | null>(null);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Initialize audio
+  // Estado para controlar se o áudio foi liberado pelo usuário
+  const [audioUnlocked, setAudioUnlocked] = useState(false);
+  const [shouldAutoPlay, setShouldAutoPlay] = useState(false);
+
+  // Sistema de liberação de áudio no primeiro clique/tap
   useEffect(() => {
-    // Enable global audio unlock for iOS/Safari
-    const enableAudio = async () => {
+    if (audioUnlocked) return;
+
+    const unlockAudio = async () => {
       try {
+        // Tentar habilitar o contexto de áudio
         const audioContext = Howler.ctx;
         if (audioContext && audioContext.state === 'suspended') {
           await audioContext.resume();
         }
+        
+        setAudioUnlocked(true);
+        setShouldAutoPlay(true); // Marcar para começar a tocar
+        
+        console.log('Áudio liberado pelo usuário');
+        
+        // Remover listeners após primeira interação
+        document.removeEventListener('click', unlockAudio);
+        document.removeEventListener('touchstart', unlockAudio);
+        document.removeEventListener('keydown', unlockAudio);
       } catch (error) {
-        console.warn('Could not resume audio context:', error);
+        console.warn('Erro ao liberar áudio:', error);
       }
     };
 
-    // Add click listener to unlock audio
-    const unlockAudio = () => {
-      enableAudio();
-      document.removeEventListener('click', unlockAudio);
-      document.removeEventListener('touchstart', unlockAudio);
-    };
-
+    // Adicionar listeners para primeira interação
     document.addEventListener('click', unlockAudio);
     document.addEventListener('touchstart', unlockAudio);
+    document.addEventListener('keydown', unlockAudio);
 
+    return () => {
+      document.removeEventListener('click', unlockAudio);
+      document.removeEventListener('touchstart', unlockAudio);
+      document.removeEventListener('keydown', unlockAudio);
+    };
+  }, [audioUnlocked]);
+
+  // Initialize audio
+  useEffect(() => {
     if (playerState.currentTrack) {
       loadTrack(playerState.currentTrack);
     }
@@ -90,7 +110,7 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({ playlist, className }) => {
       // Cleanup
       if (howlRef.current) {
         howlRef.current.stop();
-        howlRef.current.off(); // Remove all event listeners
+        howlRef.current.off();
         howlRef.current.unload();
         howlRef.current = null;
       }
@@ -98,18 +118,8 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({ playlist, className }) => {
         clearInterval(intervalRef.current);
         intervalRef.current = null;
       }
-      
-      // Remove event listeners
-      document.removeEventListener('click', unlockAudio);
-      document.removeEventListener('touchstart', unlockAudio);
-      
-      // Reset state
-      setShouldAutoPlay(false);
     };
   }, []);
-
-  // Track the intention to auto-play to avoid conflicts
-  const [shouldAutoPlay, setShouldAutoPlay] = useState(false);
 
   const loadTrack = (track: Track) => {
     console.log('Loading track:', track.title, track.src);
@@ -148,32 +158,31 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({ playlist, className }) => {
         format: ['mp3'], // Explicitly specify format
       volume: playerState.volume,
       onload: () => {
-          console.log('Track loaded successfully:', track.title);
-          clearTimeout(loadingTimeout);
+        console.log('Track loaded successfully:', track.title);
+        clearTimeout(loadingTimeout);
         setIsLoading(false);
         
-        // Only auto-play if the user intended to play this track
-        if (shouldAutoPlay && howlRef.current) {
+        // Só tentar tocar se o áudio foi liberado pelo usuário
+        if (audioUnlocked && shouldAutoPlay && howlRef.current) {
           console.log('Auto-playing after track load:', track.title);
-        setTimeout(() => {
+          setTimeout(() => {
             if (howlRef.current && shouldAutoPlay) {
-            try {
-              howlRef.current.play();
-                setShouldAutoPlay(false); // Reset auto-play flag
-            } catch (error) {
-              console.warn('Auto-play failed after load:', error);
+              try {
+                howlRef.current.play();
+                setShouldAutoPlay(false); // Reset auto-play flag após usar
+              } catch (error) {
+                console.warn('Auto-play failed after load:', error);
                 setShouldAutoPlay(false);
               }
             }
           }, 100);
-          }
+        }
       },
         onloaderror: (id, error) => {
           console.error('Error loading track:', track.title, track.src, error);
           clearTimeout(loadingTimeout);
           setIsLoading(false);
-          setShouldAutoPlay(false); // Clear auto-play flag on error
-          // Don't auto-advance to next track on load error to avoid infinite loops
+          setShouldAutoPlay(false);
         },
       onend: () => {
         handleNextTrack();
@@ -194,8 +203,7 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({ playlist, className }) => {
         onplayerror: (id, error) => {
           console.error('Playback error:', track.title, error);
           setPlayerState(prev => ({ ...prev, isPlaying: false }));
-          setShouldAutoPlay(false); // Clear auto-play flag on error
-          // Don't auto-advance to next track on error to avoid infinite loops
+          setShouldAutoPlay(false);
         },
       });
       
@@ -249,29 +257,26 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({ playlist, className }) => {
 
     if (isLoading) {
       console.warn('Track still loading, cannot play yet');
-      // Set auto-play flag so track will play when loaded
-      if (!playerState.isPlaying) {
-        setShouldAutoPlay(true);
-      }
       return;
     }
 
     try {
-    if (playerState.isPlaying) {
+      if (playerState.isPlaying) {
         console.log('Pausing track');
-      howlRef.current.pause();
-        setShouldAutoPlay(false); // Clear auto-play flag when pausing
-    } else {
+        howlRef.current.pause();
+      } else {
         console.log('Playing track');
-        // Handle user interaction requirement for audio
-        const audioContext = Howler.ctx;
-        if (audioContext && audioContext.state === 'suspended') {
-          console.log('Resuming audio context');
-          await audioContext.resume();
+        
+        // Se o áudio ainda não foi liberado, liberar agora
+        if (!audioUnlocked) {
+          const audioContext = Howler.ctx;
+          if (audioContext && audioContext.state === 'suspended') {
+            await audioContext.resume();
+          }
+          setAudioUnlocked(true);
         }
         
-        const playPromise = howlRef.current.play();
-        console.log('Play promise:', playPromise);
+        howlRef.current.play();
       }
     } catch (error) {
       console.error('Playback error:', error);
@@ -296,8 +301,8 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({ playlist, className }) => {
     const nextTrack = tracks[nextIndex];
     setPlayerState(prev => ({ ...prev, currentTrack: nextTrack }));
     
-    // Set auto-play flag if the user was playing music
-    if (wasPlaying) {
+    // Marcar para auto-play se estava tocando e áudio foi liberado
+    if (wasPlaying && audioUnlocked) {
       setShouldAutoPlay(true);
     }
     
@@ -317,8 +322,8 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({ playlist, className }) => {
     const prevTrack = tracks[prevIndex];
     setPlayerState(prev => ({ ...prev, currentTrack: prevTrack }));
     
-    // Set auto-play flag if the user was playing music
-    if (wasPlaying) {
+    // Marcar para auto-play se estava tocando e áudio foi liberado
+    if (wasPlaying && audioUnlocked) {
       setShouldAutoPlay(true);
     }
     
@@ -371,10 +376,10 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({ playlist, className }) => {
     setCurrentIndex(index);
     setPlayerState(prev => ({ ...prev, currentTrack: track }));
     
-    // Set auto-play flag if the user was playing music
-    if (wasPlaying) {
+    // Marcar para auto-play se estava tocando e áudio foi liberado
+    if (wasPlaying && audioUnlocked) {
       setShouldAutoPlay(true);
-          }
+    }
     
     loadTrack(track);
   };

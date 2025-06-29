@@ -174,7 +174,7 @@ const Gallery: React.FC<GalleryProps> = ({ photos, title, className, carouselSli
                       <div className="flex items-start justify-between mb-4">
                         <div>
                           <h3 className="text-xl font-display font-semibold text-white mb-2">
-                            {formatDate(selectedPhoto.date)}
+                            Memória Especial 💕
                           </h3>
                           <p className="text-white/80 leading-relaxed">
                             {selectedPhoto.caption}
