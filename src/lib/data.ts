@@ -24,7 +24,7 @@ export const galleryPhotos: Photo[] = [
     id: '3',
     src: '/images/galeria/33.jpg',
     alt: 'Momento de carinho',
-    caption: 'Bia, eu amo como você fica linda em qualquer foto que a gente tira 🌟',
+    caption: 'Ana, eu amo como você fica linda em qualquer foto que a gente tira 🌟',
     date: '2024-12-23',
     location: 'Nossos momentos',
     tags: ['carinho', 'beleza'],
@@ -51,7 +51,7 @@ export const galleryPhotos: Photo[] = [
     id: '6',
     src: '/images/galeria/66.jpg',
     alt: 'Momentos únicos',
-    caption: 'Cada foto que eu e você tiramos fica mais especial que a anterior, Bia 📸💕',
+    caption: 'Cada foto que eu e você tiramos fica mais especial que a anterior, Ana 📸💕',
     date: '2025-05-03',
     location: 'Construindo memórias',
     tags: ['memórias', 'especial'],
@@ -81,7 +81,7 @@ export const carouselSlides = galleryPhotos.map((photo, index) => {
   const descriptions = [
     'Amor, eu e você sempre ficamos perfeitos assim ✨',
     'Adoro essas fotos espontâneas que a gente tira 📷',
-    'Bia, você consegue ficar linda em qualquer ângulo 🌟',
+    'Ana, você consegue ficar linda em qualquer ângulo 🌟',
     'Olha só como eu e você ficamos felizes juntos 😊',
     'Neguinha, nossa cumplicidade é tudo pra mim 💖',
     'Cada momento que eu e você vivemos fica eterno nas fotos 📸'
@@ -234,7 +234,7 @@ Com você, tudo tem mais sentido, mais amor. Você não é só parte da minha vi
     id: '4',
     type: 'special',
     title: 'Meu Amor Por Você',
-    content: `Bia, você é a pessoa mais especial que já conheci. Cada momento ao seu lado é um presente que guardo no coração. Você me ensina a ser uma pessoa melhor todos os dias.
+    content: `Ana, você é a pessoa mais especial que já conheci. Cada momento ao seu lado é um presente que guardo no coração. Você me ensina a ser uma pessoa melhor todos os dias.
 
 Seu sorriso ilumina até os meus dias mais difíceis, e sua força me inspira a nunca desistir dos nossos sonhos. Obrigado por me amar do jeito que eu sou e por fazer da nossa história algo tão bonito.
 

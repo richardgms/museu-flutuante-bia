@@ -317,7 +317,7 @@ export default function Home() {
                   </div>
                 </div>
                 <p className="text-white/60 leading-relaxed use-inter text-center" style={{fontFamily: '"Inter", sans-serif', fontSize: 'clamp(16px, 2.2vw, 20px)'}}>
-                  Esse museu é exclusivamente dedicado para a minha neguinha, minha Bia 🌟
+                  Esse museu é exclusivamente dedicado para a minha neguinha, minha Ana 🌟
                 </p>
               </GlassCard>
             </footer>
