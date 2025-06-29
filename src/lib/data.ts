@@ -6,7 +6,7 @@ export const galleryPhotos: Photo[] = [
     id: '1',
     src: '/images/galeria/11.jpg',
     alt: 'Nosso momento especial',
-    caption: 'Amor, eu e você sempre ficamos lindos juntos assim 💕',
+    caption: 'Com você eu me sinto o cara mais sortudo do mundo, amor 💕',
     date: '2025-05-24',
     location: 'Nosso cantinho especial',
     tags: ['amor', 'momentos-especiais'],
@@ -15,7 +15,7 @@ export const galleryPhotos: Photo[] = [
     id: '2',
     src: '/images/galeria/22.jpg',
     alt: 'Juntinhos e felizes',
-    caption: 'Neguinha, adoro quando eu e você tiramos essas fotos espontâneas ✨',
+    caption: 'Você me faz ser o homem mais feliz do mundo ao seu lado ✨',
     date: '2025-03-05',
     location: 'Onde somos felizes',
     tags: ['felicidade', 'espontâneo'],
@@ -33,7 +33,7 @@ export const galleryPhotos: Photo[] = [
     id: '4',
     src: '/images/galeria/44.jpg',
     alt: 'Sorrisos sinceros',
-    caption: 'Olha como eu e você ficamos radiantes quando estamos juntos, amor 😊',
+    caption: 'Meu mundo fica mais colorido quando você está comigo, amor 😊',
     date: '2024-12-25',
     location: 'Sempre felizes',
     tags: ['sorriso', 'radiante'],
@@ -51,7 +51,7 @@ export const galleryPhotos: Photo[] = [
     id: '6',
     src: '/images/galeria/66.jpg',
     alt: 'Momentos únicos',
-    caption: 'Cada foto que eu e você tiramos fica mais especial que a anterior, Ana 📸💕',
+    caption: 'Ana, você é a protagonista de todos os meus momentos favoritos 📸💕',
     date: '2025-05-03',
     location: 'Construindo memórias',
     tags: ['memórias', 'especial'],
@@ -71,20 +71,20 @@ export const gallerySections: GallerySection[] = [
 export const carouselSlides = galleryPhotos.map((photo, index) => {
   const titles = [
     'Você me faz o homem mais feliz do mundo',
-    'Adoro nossos momentos assim', 
+    'Com você tudo é mais especial', 
     'Você fica linda em tudo',
-    'Eu e você sempre radiantes',
+    'Meu coração acelera quando te vejo',
     'Nossa conexão é única',
     'Construindo memórias juntos'
   ];
 
   const descriptions = [
-    'Amor, eu e você sempre ficamos perfeitos assim ✨',
-    'Adoro essas fotos espontâneas que a gente tira 📷',
+    'Sou completamente apaixonado por você, amor ✨',
+    'Com você tudo fica mais leve e bonito 📷',
     'Ana, você consegue ficar linda em qualquer ângulo 🌟',
-    'Olha só como eu e você ficamos felizes juntos 😊',
+    'Ao seu lado eu me sinto completo e feliz 😊',
     'Neguinha, nossa cumplicidade é tudo pra mim 💖',
-    'Cada momento que eu e você vivemos fica eterno nas fotos 📸'
+    'Você é a razão do meu sorriso em cada foto 📸'
   ];
   
   return {
