@@ -84,7 +84,7 @@ export const carouselSlides = galleryPhotos.map((photo, index) => {
     'Ana, você me enche de orgulho em tudo que faz, meu bem 🌟',
     'Ao seu lado eu me sinto completo e feliz 😊',
     'Neguinha, nossa cumplicidade é tudo pra mim 💖',
-    'Você é a razão do meu sorriso em cada foto 📸'
+    'Amo cada detalhe em você, Ana 📸'
   ];
   
   return {
