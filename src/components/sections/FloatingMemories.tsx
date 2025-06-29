@@ -134,9 +134,9 @@ const FloatingMemories = () => {
             <Image
               src="/images/love/6.jpg"
               alt="Nossa memória especial"
-              width={200}
-              height={272}
-              className="w-20 h-24 md:w-52 md:h-68 object-cover hover:scale-105 duration-200 cursor-pointer transition-transform rounded-lg shadow-lg"
+              width={240}
+              height={320}
+              className="w-20 h-24 md:w-60 md:h-80 object-contain hover:scale-105 duration-200 cursor-pointer transition-transform rounded-lg shadow-lg"
             />
           </motion.div>
         </FloatingElement>
