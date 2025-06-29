@@ -80,9 +80,9 @@ export const carouselSlides = galleryPhotos.map((photo, index) => {
 
   const descriptions = [
     'Sou completamente apaixonado por você, amor ✨',
-    'Com você tudo fica mais leve e bonito 📷',
+    'Com você tudo fica mais leve e bonito ❤️',
     'Você me enche de orgulho em tudo que faz, meu bem 🌟',
-    'Ao seu lado eu me sinto completo e feliz 😊',
+    'Ao seu lado eu me sinto completo e feliz 🤍',
     'Neguinha, nossa cumplicidade é tudo pra mim 💖',
     'Amo cada detalhe em você, Ana ❤️'
   ];
