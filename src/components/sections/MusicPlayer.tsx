@@ -392,26 +392,7 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({ playlist, className }) => {
     }
   };
 
-  const debugAudio = () => {
-    console.log('Debug Audio:', {
-      howlState: howlRef.current ? {
-        state: howlRef.current.state(),
-        duration: howlRef.current.duration(),
-        volume: howlRef.current.volume(),
-        playing: howlRef.current.playing(),
-      } : 'No howl instance',
-      howlerState: {
-        ctx: Howler.ctx?.state,
-        volume: Howler.volume(),
-        html5PoolSize: Howler.html5PoolSize,
-      },
-      playerState: {
-        isPlaying: playerState.isPlaying,
-        currentTime: playerState.currentTime,
-        volume: playerState.volume,
-      }
-    });
-  };
+
 
   const currentDuration = howlRef.current ? howlRef.current.duration() : 0;
   const progressPercentage = currentDuration > 0 ? (playerState.currentTime / currentDuration) * 100 : 0;
@@ -597,18 +578,7 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({ playlist, className }) => {
                       <ArrowsRightLeftIcon className="w-5 h-5" />
                     </motion.button>
 
-                {/* Debug Audio Button (development only) */}
-                {process.env.NODE_ENV === 'development' && (
-                  <motion.button
-                    onClick={debugAudio}
-                    className="p-2 rounded-full hover:bg-white/10 transition-colors text-yellow-400"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    title="Debug Audio"
-                  >
-                    <span className="text-xs">🔧</span>
-                  </motion.button>
-                )}
+
 
                     <motion.button
                       onClick={handlePrevTrack}
