@@ -45,7 +45,7 @@ const FloatingMemories = () => {
       {/* Fotos flutuantes */}
       <Floating sensitivity={-1} className="overflow-visible">
         {/* Foto 1 - Canto superior esquerdo */}
-        <FloatingElement depth={0.5} className="top-[8%] left-[2%] md:top-[15%] md:left-[8%]">
+        <FloatingElement depth={0.5} className="top-[8%] left-[2%] md:top-[12%] md:left-[5%]">
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -54,14 +54,14 @@ const FloatingMemories = () => {
             <Image
               src="/images/love/1.jpg"
               alt="Nossa memória especial"
-              width={120}
-              height={120}
-              className="w-16 h-16 md:w-32 md:h-32 object-cover hover:scale-105 duration-200 cursor-pointer transition-transform rounded-lg shadow-lg"
+              width={160}
+              height={160}
+              className="w-16 h-16 md:w-40 md:h-40 object-cover hover:scale-105 duration-200 cursor-pointer transition-transform rounded-lg shadow-lg"
             />
           </motion.div>
         </FloatingElement>
         {/* Foto 2 - Topo centro-esquerda */}
-        <FloatingElement depth={1} className="top-[12%] left-[22%] md:top-[18%] md:left-[25%]">
+        <FloatingElement depth={1} className="top-[12%] left-[22%] md:top-[20%] md:left-[22%]">
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -70,14 +70,14 @@ const FloatingMemories = () => {
             <Image
               src="/images/love/2.jpg"
               alt="Nossa memória especial"
-              width={140}
-              height={140}
-              className="w-20 h-20 md:w-36 md:h-36 object-cover hover:scale-105 duration-200 cursor-pointer transition-transform rounded-lg shadow-lg"
+              width={176}
+              height={176}
+              className="w-20 h-20 md:w-44 md:h-44 object-cover hover:scale-105 duration-200 cursor-pointer transition-transform rounded-lg shadow-lg"
             />
           </motion.div>
         </FloatingElement>
         {/* Foto 3 - Topo centro-direita (maior) */}
-        <FloatingElement depth={2} className="top-[4%] left-[50%] md:top-[8%] md:left-[53%]">
+        <FloatingElement depth={2} className="top-[4%] left-[50%] md:top-[5%] md:left-[48%]">
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -86,14 +86,14 @@ const FloatingMemories = () => {
             <Image
               src="/images/love/3.jpg"
               alt="Nossa memória especial"
-              width={200}
-              height={260}
-              className="w-24 h-32 md:w-52 md:h-68 object-cover hover:scale-105 duration-200 cursor-pointer transition-transform rounded-lg shadow-lg"
+              width={240}
+              height={320}
+              className="w-24 h-32 md:w-60 md:h-80 object-cover hover:scale-105 duration-200 cursor-pointer transition-transform rounded-lg shadow-lg"
             />
           </motion.div>
         </FloatingElement>
         {/* Foto 4 - Topo direita */}
-        <FloatingElement depth={1} className="top-[6%] left-[70%] md:top-[8%] md:left-[78%]">
+        <FloatingElement depth={1} className="top-[6%] left-[70%] md:top-[6%] md:left-[75%]">
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -102,14 +102,14 @@ const FloatingMemories = () => {
             <Image
               src="/images/love/4.jpg"
               alt="Nossa memória especial"
-              width={150}
-              height={150}
-              className="w-16 h-16 md:w-40 md:h-40 object-cover hover:scale-105 duration-200 cursor-pointer transition-transform rounded-lg shadow-lg"
+              width={192}
+              height={192}
+              className="w-16 h-16 md:w-48 md:h-48 object-cover hover:scale-105 duration-200 cursor-pointer transition-transform rounded-lg shadow-lg"
             />
           </motion.div>
         </FloatingElement>
         {/* Foto 5 - Meio esquerda */}
-        <FloatingElement depth={1} className="top-[32%] left-[2%] md:top-[40%] md:left-[5%]">
+        <FloatingElement depth={1} className="top-[32%] left-[2%] md:top-[38%] md:left-[2%]">
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -118,14 +118,14 @@ const FloatingMemories = () => {
             <Image
               src="/images/love/5.jpg"
               alt="Nossa memória especial"
-              width={160}
-              height={160}
-              className="w-20 h-20 md:w-44 md:h-44 object-cover hover:scale-105 duration-200 cursor-pointer transition-transform rounded-lg shadow-lg"
+              width={208}
+              height={208}
+              className="w-20 h-20 md:w-52 md:h-52 object-cover hover:scale-105 duration-200 cursor-pointer transition-transform rounded-lg shadow-lg"
             />
           </motion.div>
         </FloatingElement>
         {/* Foto 6 - Base direita */}
-        <FloatingElement depth={2} className="top-[44%] left-[68%] md:top-[55%] md:left-[77%]">
+        <FloatingElement depth={2} className="top-[44%] left-[68%] md:top-[52%] md:left-[72%]">
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -134,14 +134,14 @@ const FloatingMemories = () => {
             <Image
               src="/images/love/6.jpg"
               alt="Nossa memória especial"
-              width={170}
-              height={230}
-              className="w-20 h-24 md:w-44 md:h-60 object-cover hover:scale-105 duration-200 cursor-pointer transition-transform rounded-lg shadow-lg"
+              width={200}
+              height={272}
+              className="w-20 h-24 md:w-52 md:h-68 object-cover hover:scale-105 duration-200 cursor-pointer transition-transform rounded-lg shadow-lg"
             />
           </motion.div>
         </FloatingElement>
         {/* Foto 7 - Base esquerda */}
-        <FloatingElement depth={4} className="top-[54%] left-[10%] md:top-[58%] md:left-[15%]">
+        <FloatingElement depth={4} className="top-[54%] left-[10%] md:top-[60%] md:left-[12%]">
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -150,15 +150,15 @@ const FloatingMemories = () => {
             <Image
               src="/images/love/7.jpg"
               alt="Nossa memória especial"
-              width={240}
-              height={240}
-              className="w-24 h-24 md:w-64 md:h-64 object-cover hover:scale-105 duration-200 cursor-pointer transition-transform rounded-lg shadow-lg"
+              width={288}
+              height={288}
+              className="w-24 h-24 md:w-72 md:h-72 object-cover hover:scale-105 duration-200 cursor-pointer transition-transform rounded-lg shadow-lg"
               style={{ width: "auto", height: "auto" }}
             />
           </motion.div>
         </FloatingElement>
         {/* Foto 8 - Base centro */}
-        <FloatingElement depth={1} className="top-[62%] left-[40%] md:top-[62%] md:left-[50%]">
+        <FloatingElement depth={1} className="top-[62%] left-[40%] md:top-[65%] md:left-[45%]">
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -167,9 +167,9 @@ const FloatingMemories = () => {
             <Image
               src="/images/love/8.jpg"
               alt="Nossa memória especial"
-              width={150}
-              height={150}
-              className="w-16 h-16 md:w-40 md:h-40 object-cover hover:scale-105 duration-200 cursor-pointer transition-transform rounded-lg shadow-lg"
+              width={192}
+              height={192}
+              className="w-16 h-16 md:w-48 md:h-48 object-cover hover:scale-105 duration-200 cursor-pointer transition-transform rounded-lg shadow-lg"
             />
           </motion.div>
         </FloatingElement>
